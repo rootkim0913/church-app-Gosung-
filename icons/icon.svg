@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="80" fill="#F3EBE1"/>
+  <!-- Cross -->
+  <rect x="226" y="80" width="60" height="352" rx="8" fill="#b8a391"/>
+  <rect x="146" y="170" width="220" height="60" rx="8" fill="#b8a391"/>
+  <!-- Church roof shape -->
+  <polygon points="256,50 156,150 356,150" fill="#D1BFAE" opacity="0.6"/>
+  <!-- PCK logo colors at bottom -->
+  <rect x="176" y="410" width="36" height="36" rx="4" fill="#F89020"/>
+  <rect x="220" y="410" width="36" height="36" rx="4" fill="#9BC628"/>
+  <rect x="264" y="410" width="36" height="36" rx="4" fill="#00AEEE"/>
+  <rect x="308" y="410" width="36" height="36" rx="4" fill="#7CD2F6"/>
+</svg>
