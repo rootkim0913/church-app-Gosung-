@@ -131,9 +131,9 @@ ul {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1.5fr;
-    gap: 3px;
-    width: 25px;
-    height: 33px;
+    gap: 2px;
+    width: 28px;
+    height: 36px;
 }
 .cl-tl { background-color: #F89020; border-radius: 100% 0 0 0; }
 .cl-tr { background-color: #9BC628; border-radius: 0 100% 0 0; }
@@ -144,21 +144,22 @@ ul {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: 1px;
 }
 .logo-text-top {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 700;
     color: #555;
-    letter-spacing: -0.5px;
+    letter-spacing: 0.5px;
     line-height: 1;
 }
 .logo-text-bottom {
-    font-size: 1.15rem;
+    font-size: 0.85rem;
     font-weight: 800;
     color: #555;
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
     line-height: 1;
-    margin-top: 2px;
+    margin-top: 1px;
 }
 .logo-name {
     font-family: var(--font-sans);
