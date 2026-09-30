@@ -1,6 +1,6 @@
 {
   "project_name": "Miracle smart",
-  "version": "v23-live-supabase-auth",
+  "version": "v24-auth-redirect-fix",
   "updated_at": "2026-09-30",
   "purpose": "농산물 판매자를 위한 데이터 확인, 썸네일/상세페이지 제작 대행, 쿠팡 상품등록 운영 서비스",
   "philosophy": "분석은 고객이 직접, 제작은 요청 즉시 자동으로",
@@ -340,7 +340,14 @@
         "로그아웃"
       ],
       "jobs_page": "로그인 사용자의 jobs 테이블을 RLS로 조회",
-      "security": "profiles.role/email은 고객이 수정할 수 없고 display_name 컬럼만 수정 가능. credit reserve/capture/release RPC는 service_role 전용."
+      "security": "profiles.role/email은 고객이 수정할 수 없고 display_name 컬럼만 수정 가능. credit reserve/capture/release RPC는 service_role 전용.",
+      "redirect_issue": {
+        "observed": "이메일 인증 링크가 localhost:3000으로 리디렉트되어 인증 후 오류처럼 보임",
+        "root_cause": "Supabase Auth Site URL/Allowed Redirect URL이 아직 기본 localhost로 설정됨",
+        "code_fix": "회원가입 요청에 emailRedirectTo=window.location.origin 추가",
+        "manual_required": "Supabase Dashboard > Authentication > URL Configuration에서 Site URL과 Additional Redirect URLs를 https://miracle-smart-customer.onrender.com 으로 설정",
+        "current_test_user": "이메일 인증 자체는 이미 성공한 상태"
+      }
     }
   }
 }
