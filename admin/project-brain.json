@@ -1,0 +1,95 @@
+{
+  "project_name": "Miracle smart",
+  "version": "v15-project-brain",
+  "updated_at": "2026-09-30",
+  "purpose": "농산물 판매자를 위한 데이터 확인, 썸네일/상세페이지 제작 대행, 쿠팡 상품등록 운영 서비스",
+  "philosophy": "분석은 고객이 직접, 제작과 등록은 우리가 대신",
+  "headline": "농산물 판매, 분석부터 쿠팡 등록까지.",
+  "urls": {
+    "customer": "https://miracle-smart-customer.onrender.com",
+    "admin": "https://miracle-smart-admin.onrender.com"
+  },
+  "source": {
+    "github_repo": "rootkim0913/church-app-Gosung-",
+    "branch": "miracle-smart-deploy",
+    "hosting": "Render static sites",
+    "auto_deploy": true
+  },
+  "architecture": {
+    "customer_site": [
+      "데이터랩 메뉴는 https://datalab.naver.com/ 새 탭 연결",
+      "제작 요청",
+      "내 작업",
+      "내 계정",
+      "회원별 쿠팡 Open API 체크리스트",
+      "출고 소요일 1~7일 선택",
+      "결제 URL은 현재 비워두고 추후 PAYMENT_URL만 연결"
+    ],
+    "admin_site": [
+      "대시보드",
+      "썸네일 제작",
+      "상세페이지 제작",
+      "쿠팡 등록 준비",
+      "프롬프트 관리",
+      "ChatGPT 수정 요청",
+      "프로젝트 브레인"
+    ]
+  },
+  "integrations": {
+    "naver_datalab": "API 미연동. 고객 메뉴에서 공식 네이버 데이터랩 링크로 이동.",
+    "coupang": "회원별 Open API 연결 예정. Vendor ID, Access Key, Secret Key, vendorUserId, 서버 IP Allowlist가 필요.",
+    "ai_images": "실제 OpenAI API 미연동. 기존 마스터 프롬프트는 유지하며 운영 승인 후 연결.",
+    "member_db": "아직 실DB 미연동. 실서비스 전 Supabase 등으로 회원/작업/배송/쿠팡 연결정보를 관리 예정.",
+    "payment": "미연동. 나중에 외부 결제 URL만 설정."
+  },
+  "coupang_defaults": {
+    "coupon": "1,000원 즉시할인",
+    "promotion": "3개월",
+    "stock_modes": [
+      "기본재고 9999",
+      "9개 자동유지(잔여 2개 이하 시 보충)"
+    ],
+    "shipping_method": "신선냉동",
+    "outbound_shipping_time_day": "회원이 1~7일 선택",
+    "tax": "면세",
+    "publish_policy": "관리자 검수 후 등록"
+  },
+  "thumbnail_rules": [
+    "기존 사용자 제공 마스터 프롬프트를 임의로 변경하지 않는다.",
+    "실제 상품사진 업로드 시 업로드 사진 최우선.",
+    "A/B/C는 같은 상품 종을 유지하고 구도/크롭/카피만 다르게 한다.",
+    "사과/부사/홍로/apple -> 사과만, 배/나주배/신고 -> 배만, 자두/대석자두/plum -> 자두만.",
+    "미지원 상품에 엉뚱한 다른 과일을 대신 표시하지 않는다."
+  ],
+  "detail_rules": [
+    "기존 사용자 제공 마스터 프롬프트를 임의로 변경하지 않는다.",
+    "필수 입력은 상품명, 고객문의 전화번호, 문의가능시간 3개.",
+    "선택적으로 실제 상품사진 1~3장.",
+    "6개 섹션: HOOK, TRUST, FARM & PACKING, WHY BUY, STORAGE & ENJOY, PURCHASE REASSURANCE.",
+    "허위 후기/인증/산지직송/Brix 등 검증되지 않은 내용은 만들지 않는다."
+  ],
+  "security_and_cost_rules": [
+    "사용자 명시적 승인 없이 유료 플랜, API 과금, 도메인 구매, 결제 연동을 시작하지 않는다.",
+    "공개 데모에는 실제 개인정보/API 키를 입력하지 않는다.",
+    "실서비스에서는 Secret Key를 브라우저나 평문 DB에 저장하지 않는다.",
+    "관리자 사이트는 실서비스 전 반드시 로그인/권한을 적용한다.",
+    "고객 데이터와 프로젝트 컨텍스트는 ChatGPT 대화 기억에 의존하지 않고 자체 저장소를 원본으로 삼는다."
+  ],
+  "persistence_strategy": [
+    "프로젝트의 원본 코드는 GitHub에 저장하고 Render가 자동 배포한다.",
+    "이 project-brain.json을 프로젝트의 장기 컨텍스트 원본으로 사용한다.",
+    "어떤 컴퓨터/어떤 ChatGPT 계정에서도 관리자 사이트의 '프로젝트 브레인'에서 전체 컨텍스트를 복사해 새 대화에 붙여넣으면 이어서 작업할 수 있다.",
+    "향후 Supabase 연결 후 프로젝트 설정/프롬프트/변경이력도 DB에 버전 관리한다."
+  ],
+  "production_before_sale": [
+    "관리자 인증 및 역할 권한",
+    "회원 DB와 RLS",
+    "쿠팡 Secret Key 서버 암호화 저장",
+    "실제 작업내역/이미지 저장",
+    "백업/복구 정책",
+    "실제 API 연결 테스트",
+    "결제 URL 연동",
+    "개인정보 처리방침/이용약관"
+  ],
+  "handoff_instruction": "이 컨텍스트를 읽은 AI는 기존 요구사항을 임의로 초기화하거나 재설계하지 말고 현재 구조를 기준으로 변경 요청만 반영한다. 비용이 생기는 작업과 개인정보/API 키 처리 방식 변경은 반드시 사용자에게 확인한다."
+}
