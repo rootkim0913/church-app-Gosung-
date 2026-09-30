@@ -1,6 +1,6 @@
 {
   "project_name": "Miracle smart",
-  "version": "v26-auth-password-confirm-resend",
+  "version": "v27-home-hero-redesign",
   "updated_at": "2026-09-30",
   "purpose": "농산물 판매자를 위한 데이터 확인, 썸네일/상세페이지 제작 대행, 쿠팡 상품등록 운영 서비스",
   "philosophy": "분석은 고객이 직접, 제작은 요청 즉시 자동으로",
@@ -352,5 +352,13 @@
         "production_note": "상용화 전에는 기본 Supabase 발송 대신 자체 SMTP/트랜잭션 메일 서비스 검토 권장"
       }
     }
+  },
+  "homepage_design": {
+    "logged_in_free_cta_hidden": true,
+    "hero_style": "approved mockup style: large left headline + right analytics/product workflow illustration",
+    "hero_headline": "농산물 판매, 분석부터 쿠팡 등록까지.",
+    "badge": "분석은 고객이 직접, 제작은 요청 즉시 자동으로",
+    "logo": "top-left green M replaced by gold geometric Miracle Academy mark only, no '미라클아카데미' text",
+    "feature_cards": "4-card polished SaaS layout with icons"
   }
 }
