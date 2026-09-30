@@ -1,6 +1,6 @@
 {
   "project_name": "Miracle smart",
-  "version": "v25-new-supabase-migrated",
+  "version": "v26-auth-password-confirm-resend",
   "updated_at": "2026-09-30",
   "purpose": "농산물 판매자를 위한 데이터 확인, 썸네일/상세페이지 제작 대행, 쿠팡 상품등록 운영 서비스",
   "philosophy": "분석은 고객이 직접, 제작은 요청 즉시 자동으로",
@@ -340,7 +340,17 @@
       ],
       "jobs_page": "로그인 사용자의 jobs 테이블을 RLS로 조회",
       "security": "profiles.role/email은 고객이 수정할 수 없고 display_name 컬럼만 수정 가능. credit reserve/capture/release RPC는 service_role 전용.",
-      "manual_required": "새 Supabase Dashboard > Authentication > URL Configuration에서 Site URL과 Additional Redirect URLs를 https://miracle-smart-customer.onrender.com 으로 설정"
+      "manual_required": "새 Supabase Dashboard > Authentication > URL Configuration에서 Site URL과 Additional Redirect URLs를 https://miracle-smart-customer.onrender.com 으로 설정",
+      "signup_ui": {
+        "password_confirmation_required": true,
+        "password_match_rule": "비밀번호와 비밀번호 확인이 동일해야 가입 요청 실행",
+        "resend_confirmation_button": true
+      },
+      "email_delivery_observation": {
+        "status": "Supabase auth log shows confirmation mail send event",
+        "note": "고객이 Gmail 수신함에서 메일을 확인하지 못한 사례가 있어 스팸함 확인 및 인증메일 재전송 버튼을 추가함",
+        "production_note": "상용화 전에는 기본 Supabase 발송 대신 자체 SMTP/트랜잭션 메일 서비스 검토 권장"
+      }
     }
   }
 }
