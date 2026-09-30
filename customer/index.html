@@ -31,7 +31,7 @@ document.getElementById('signupSubmit')?.addEventListener('click',async()=>{
   const ok=document.getElementById('agreeTerms').checked;
   if(!email||pw.length<8||!name||!ok){showAuthMessage('이메일, 8자 이상 비밀번호, 이름/닉네임, 약관 동의를 확인해주세요.',true);return;}
   const btn=document.getElementById('signupSubmit');btn.disabled=true;btn.textContent='가입 처리 중...';
-  const {data,error}=await db.auth.signUp({email,password:pw,options:{data:{display_name:name}}});
+  const {data,error}=await db.auth.signUp({email,password:pw,options:{data:{display_name:name},emailRedirectTo:window.location.origin}});
   btn.disabled=false;btn.textContent='가입하고 시작하기';
   if(error){showAuthMessage(authErrorText(error.message),true);return;}
   if(data.session){showAuthMessage('회원가입이 완료되었습니다.');await applySession(data.session);show('verify');}
