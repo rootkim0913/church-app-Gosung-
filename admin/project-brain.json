@@ -1,6 +1,6 @@
 {
   "project_name": "Miracle smart",
-  "version": "v16-commercial-prep",
+  "version": "v17-simple-signup-verification-center",
   "updated_at": "2026-09-30",
   "purpose": "농산물 판매자를 위한 데이터 확인, 썸네일/상세페이지 제작 대행, 쿠팡 상품등록 운영 서비스",
   "philosophy": "분석은 고객이 직접, 제작과 등록은 우리가 대신",
@@ -18,10 +18,13 @@
   "architecture": {
     "customer_site": [
       "데이터랩 메뉴는 https://datalab.naver.com/ 새 탭 연결",
+      "간단 회원가입: 이메일 + 비밀번호, 이름/닉네임 선택, 약관 동의",
+      "가입 시 사업자정보/쿠팡 API/배송정보를 요구하지 않음",
+      "가입 후 인증센터에서 쿠팡 Open API와 배송 기본값을 단계별 설정",
       "제작 요청",
       "내 작업",
+      "인증센터",
       "내 계정",
-      "회원별 쿠팡 Open API 체크리스트",
       "출고 소요일 1~7일 선택",
       "결제 URL은 현재 비워두고 추후 PAYMENT_URL만 연결"
     ],
@@ -37,7 +40,7 @@
   },
   "integrations": {
     "naver_datalab": "API 미연동. 고객 메뉴에서 공식 네이버 데이터랩 링크로 이동.",
-    "coupang": "회원별 Open API 연결 예정. Vendor ID, Access Key, Secret Key, vendorUserId, 서버 IP Allowlist가 필요.",
+    "coupang": "회원가입 이후 인증센터에서 회원별 Open API를 연결. 가입 단계에서는 요구하지 않음. Vendor ID, Access Key, Secret Key, vendorUserId, 서버 IP Allowlist가 필요.",
     "ai_images": "실제 OpenAI 이미지 API 미연동. 사진이 없으면 웹 참고이미지를 찾을 수 있고, 최종 판매용 썸네일/상세페이지는 OpenAI API 연결 후 기존 마스터 프롬프트로 새 이미지 생성 예정.",
     "member_db": "아직 실DB 미연동. 실서비스 전 Supabase 등으로 회원/작업/배송/쿠팡 연결정보를 관리 예정.",
     "payment": "미연동. 나중에 외부 결제 URL만 설정.",
@@ -98,5 +101,29 @@
     "결제 URL 연동",
     "상용 도메인/관리자 인증"
   ],
-  "handoff_instruction": "이 컨텍스트를 읽은 AI는 기존 요구사항을 임의로 초기화하거나 재설계하지 말고 현재 구조를 기준으로 변경 요청만 반영한다. 비용이 생기는 작업과 개인정보/API 키 처리 방식 변경은 반드시 사용자에게 확인한다."
+  "handoff_instruction": "이 컨텍스트를 읽은 AI는 기존 요구사항을 임의로 초기화하거나 재설계하지 말고 현재 구조를 기준으로 변경 요청만 반영한다. 비용이 생기는 작업과 개인정보/API 키 처리 방식 변경은 반드시 사용자에게 확인한다.",
+  "signup_policy": {
+    "goal": "가입 이탈 최소화",
+    "signup_required": [
+      "이메일",
+      "비밀번호",
+      "약관 동의"
+    ],
+    "signup_optional": [
+      "이름 또는 닉네임"
+    ],
+    "not_required_at_signup": [
+      "사업자정보",
+      "쿠팡 Vendor ID",
+      "Access Key",
+      "Secret Key",
+      "vendorUserId",
+      "배송정보"
+    ],
+    "post_signup_verification_center": [
+      "계정 확인",
+      "쿠팡 Open API 연결",
+      "배송 기본값"
+    ]
+  }
 }
